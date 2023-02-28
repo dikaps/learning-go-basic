@@ -10,85 +10,59 @@ func judul(title string) {
 // Operator
 
 func main() {
-	judul("Seleksi Kondisi")
+	judul("Perulangan cara standar")
 
-	var point = 8
-
-	if point == 10 {
-		fmt.Println("Lulus dengan nilai sempurna")
-	} else if point >= 5 {
-		fmt.Println("lulus")
-	} else if point == 4 {
-		fmt.Println("hampir lulus")
-	} else {
-		fmt.Printf("tidak lulus. nilai anda %d \n", point)
+	for i := 0; i < 5; i++ {
+		fmt.Println("Angka", i)
 	}
 
-	// temporary variabel pada if - else
-	// variabel yang hanya bisa digunakan dalam scope seleksi kondisi saja
-	judul("temporary variabel")
-	var points = 8840.0
-
-	if percent := points / 100; percent >= 100 {
-		fmt.Printf("%.1f%s perfect! \n", percent, "%")
-	} else if percent >= 70 {
-		fmt.Printf("%.1f%s good \n", percent, "%")
-	} else {
-		fmt.Printf("%.1f%s not bad \n", percent, "%")
+	judul("Perulangan gaya while")
+	i := 0
+	for i < 5 {
+		fmt.Println("Angka", i)
+		i++
 	}
 
-	// switch case
-	// seleksi kondisi yang sifatnya pokus pada satu variabel
-	judul("switch case")
-	switch point {
-	case 8:
-		{
-			fmt.Println("just say ehlo")
-			fmt.Println("perfect")
-		}
-	case 7, 6, 5, 4:
-		fmt.Println("awesome")
-	default:
-		fmt.Println("not bad")
-	}
+	judul("for tanpa argumen")
+	i = 0
+	for {
+		fmt.Println("Angka", i)
+		i++
 
-	// switch dengan gaya if else
-	judul("switch dengan gaya if else")
-	point = 6
-	switch {
-	case point == 8:
-		fmt.Println("perfect")
-	case point < 8 && point > 3:
-		fmt.Println("awesome")
-		fallthrough // keyword untuk memaksa melanjutkan ke perintah case yang selanjutnya tanpa memperdulikan case nya benar atau salah
-	case point < 5:
-		fmt.Println("you need to learn more")
-	default:
-		{
-			fmt.Println("not bad")
-			fmt.Println("you need to learn more")
+		if i == 3 {
+			break
 		}
 	}
 
-	judul("seleksi kondisi bersarang")
-	point = 10
-	if point > 7 {
-		switch point {
-		case 10:
-			fmt.Println("perfect!")
-		default:
-			fmt.Println("nice!")
+	judul("Penggunaan break dan continue")
+	for i := 1; i <= 10; i++ {
+		if i%2 == 1 {
+			continue
 		}
-	} else {
-		if point == 5 {
-			fmt.Println("Not bad")
-		} else if point == 3 {
-			fmt.Println("keep trying")
-		} else {
-			fmt.Println("you can do it")
-			if point == 0 {
-				fmt.Println("try harder!")
+
+		if i > 8 {
+			break
+		}
+
+		fmt.Println("Angka", i)
+	}
+
+	judul("Perluangan bersarang")
+	for i := 0; i < 5; i++ {
+		for j := i; j < 5; j++ {
+			fmt.Print(j, " ")
+		}
+		fmt.Println()
+	}
+
+	judul("Label dalam Perulangan")
+outerLoop:
+	for i := 0; i < 5; i++ {
+		for j := 0; j < 5; j++ {
+			if i == 3 {
+				break outerLoop
 			}
+			fmt.Print("matriks [", i, "][", j, "]", "\n")
 		}
 	}
 }
